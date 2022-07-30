@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CustomerOrdersDetails;
 import com.example.demo.dto.NewEmail;
 import com.example.demo.entity.Customer;
 import com.example.demo.service.CustomerService;
@@ -33,6 +34,10 @@ public class CustomerController {
     @GetMapping("/customerOrderTotalPrice/{TotalPrice}")
     public List<Customer> getCustomers(@PathVariable("TotalPrice") BigDecimal totalPrice){
         return customerService.findByTotalPrice(totalPrice);
+    }
+    @GetMapping("/customerOrderDetails/{id}")
+    public CustomerOrdersDetails findCustomerOrdersDetails(@PathVariable("id") Long id){
+        return customerService.getCustomerOrdersDetails(id);
     }
     @PutMapping("/updateCustomerEmail")
     public void updateCustomerEmail(@RequestBody NewEmail newEmail){

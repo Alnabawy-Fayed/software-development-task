@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.CustomerRepository;
 import com.example.demo.dao.OrderRepository;
+import com.example.demo.dto.CustomerOrdersDetails;
 import com.example.demo.dto.NewEmail;
 import com.example.demo.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -54,6 +56,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
+    }
+
+    @Override
+    public CustomerOrdersDetails getCustomerOrdersDetails(Long id) {
+        List<Object[]> result = orderRepository.findCustomerOrdersDetails(id);
+        Object[] objects = result.get(0);
+        CustomerOrdersDetails customerOrdersDetails = new CustomerOrdersDetails();
+        customerOrdersDetails.setTotalOrders((BigInteger) objects[0]);
+        customerOrdersDetails.setTotalPrice((BigDecimal) objects[1]);
+        return customerOrdersDetails;
     }
 
 }

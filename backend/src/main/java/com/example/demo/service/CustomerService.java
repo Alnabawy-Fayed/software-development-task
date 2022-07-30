@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.CustomerOrdersDetails;
 import com.example.demo.dto.NewEmail;
 import com.example.demo.entity.Customer;
 
@@ -14,4 +15,5 @@ public interface CustomerService {
     public void addCustomer(Customer customer);
     public void updateCustomerEmail(NewEmail email);
     public void deleteCustomer(Long id);
+    public CustomerOrdersDetails getCustomerOrdersDetails(Long id);
 }

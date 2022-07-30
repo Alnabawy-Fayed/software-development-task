@@ -14,6 +14,8 @@
 http://localhost:8080/customers
 #### Get all orders data using [GET]
 http://localhost:8080/orders
+#### Get customer total orders details [GET] 
+http://localhost:8080/api/customerOrderDetails/{id}
 #### Get customer by id using [GET]
 http://localhost:8080/api/customerId/{id}
 #### Get customer by fullName using [GET]
